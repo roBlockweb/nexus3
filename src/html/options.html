@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus Settings</title>
+  <link rel="stylesheet" href="../css/options.css">
+</head>
+<body>
+  <div class="nexus-options">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <img src="../images/icon48.png" alt="Nexus Logo" class="logo-image">
+        <h1>Nexus Settings</h1>
+      </div>
+    </header>
+    
+    <!-- Status message container -->
+    <div id="status-message" class="status-message" style="display: none;"></div>
+    
+    <!-- Main content -->
+    <div class="content">
+      <!-- Tab navigation -->
+      <nav class="tab-navigation">
+        <button class="tab-button active" data-tab="general">General</button>
+        <button class="tab-button" data-tab="ai">AI & Processing</button>
+        <button class="tab-button" data-tab="appearance">Appearance</button>
+        <button class="tab-button" data-tab="data">Data Management</button>
+        <button class="tab-button" data-tab="advanced">Advanced</button>
+        <button class="tab-button" data-tab="logs">System Logs</button>
+      </nav>
+      
+      <!-- Tab content -->
+      <div class="tab-container">
+        <!-- General tab -->
+        <div class="tab-content" data-tab="general">
+          <div class="settings-section">
+            <h2>General Settings</h2>
+            
+            <div class="setting-item">
+              <label for="capture-method">Content Capture Method</label>
+              <select id="capture-method" class="setting-input">
+                <option value="auto">Automatic (recommended)</option>
+                <option value="manual">Manual selection</option>
+                <option value="readability">Readability-focused</option>
+                <option value="comprehensive">Comprehensive</option>
+              </select>
+              <div class="setting-description">
+                Choose how Nexus captures content from web pages.
+              </div>
+            </div>
+            
+            <div class="setting-item">
+              <label for="notifications-enabled" class="toggle-label">
+                Show Notifications
+                <div class="toggle-switch">
+                  <input type="checkbox" id="notifications-enabled" checked>
+                  <span class="toggle-slider"></span>
+                </div>
+              </label>
+              <div class="setting-description">
+                Display notifications for important events like successful captures.
+              </div>
+            </div>
+            
+            <div class="setting-item">
+              <label for="auto-capture" class="toggle-label">
+                Auto-Capture Content
+                <div class="toggle-switch">
+                  <input type="checkbox" id="auto-capture">
+                  <span class="toggle-slider"></span>
+                </div>
+              </label>
+              <div class="setting-description">
+                Automatically capture content from pages you visit.
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- AI & Processing tab -->
+        <div class="tab-content" data-tab="ai" style="display: none;">
+          <div class="settings-section">
+            <h2>AI & Processing Settings</h2>
+            
+            <div class="setting-item">
+              <label for="ai-processing-level">AI Processing Level</label>
+              <select id="ai-processing-level" class="setting-input">
+                <option value="minimal">Minimal - Basic categorization only</option>
+                <option value="balanced" selected>Balanced - Standard processing (recommended)</option>
+                <option value="full">Full - Maximum processing</option>
+              </select>
+              <div class="setting-description">
+                Choose how much AI processing to apply to captured content. Higher levels provide more insights but use more resources.
+              </div>
+            </div>
+            
+            <div class="setting-item">
+              <label for="storage-limit">Maximum Storage</label>
+              <div class="range-container">
+                <input type="range" id="storage-limit" min="10" max="500" value="50" step="10" class="range-input">
+                <span id="storage-value">50 MB</span>
+              </div>
+              <div class="setting-description">
+                Maximum storage space for your knowledge network (10MB - 500MB).
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Appearance tab -->
+        <div class="tab-content" data-tab="appearance" style="display: none;">
+          <div class="settings-section">
+            <h2>Appearance Settings</h2>
+            
+            <div class="setting-item">
+              <label for="theme">Theme</label>
+              <select id="theme" class="setting-input">
+                <option value="system">System Default</option>
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+              </select>
+              <div class="setting-description">
+                Choose the visual theme for Nexus.
+              </div>
+            </div>
+            
+            <div class="setting-item">
+              <label for="accent-color">Accent Color</label>
+              <input type="color" id="accent-color" value="#4a90e2" class="color-input">
+              <div class="setting-description">
+                Select the accent color for the interface.
+              </div>
+            </div>
+            
+            <div class="setting-item">
+              <label for="font-size">Font Size</label>
+              <select id="font-size" class="setting-input">
+                <option value="small">Small</option>
+                <option value="medium" selected>Medium</option>
+                <option value="large">Large</option>
+              </select>
+              <div class="setting-description">
+                Adjust the text size throughout the interface.
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Data Management tab -->
+        <div class="tab-content" data-tab="data" style="display: none;">
+          <div class="settings-section">
+            <h2>Data Management</h2>
+            
+            <div class="data-actions">
+              <button id="export-data-button" class="secondary-button">
+                <span class="icon icon-export"></span>
+                Export All Data
+              </button>
+              <button id="import-data-button" class="secondary-button">
+                <span class="icon icon-import"></span>
+                Import Data
+              </button>
+              <button id="clear-data-button" class="danger-button">
+                <span class="icon icon-trash"></span>
+                Clear All Data
+              </button>
+            </div>
+            
+            <div class="warning-box">
+              <h3>Warning</h3>
+              <p>
+                Clearing data permanently removes all your captured content, connections, and insights.
+                This action cannot be undone. Please export your data first if you want to keep a backup.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Advanced tab -->
+        <div class="tab-content" data-tab="advanced" style="display: none;">
+          <div class="settings-section">
+            <h2>Advanced Settings</h2>
+            
+            <div class="setting-item">
+              <label for="debug-mode" class="toggle-label">
+                Debug Mode
+                <div class="toggle-switch">
+                  <input type="checkbox" id="debug-mode">
+                  <span class="toggle-slider"></span>
+                </div>
+              </label>
+              <div class="setting-description">
+                Enable detailed logging for troubleshooting.
+              </div>
+            </div>
+            
+            <div class="setting-item">
+              <label for="use-gpu">Hardware Acceleration</label>
+              <select id="use-gpu" class="setting-input">
+                <option value="auto">Automatic (recommended)</option>
+                <option value="enabled">Always Use GPU</option>
+                <option value="disabled">CPU Only</option>
+              </select>
+              <div class="setting-description">
+                Control how Nexus uses your hardware for AI processing.
+              </div>
+            </div>
+            
+            <div class="setting-item">
+              <label for="max-memory">Maximum Memory Usage</label>
+              <div class="range-container">
+                <input type="range" id="max-memory" min="25" max="90" value="75" step="5" class="range-input">
+                <span id="memory-value">75%</span>
+              </div>
+              <div class="setting-description">
+                Maximum percentage of available memory Nexus can use for AI processing.
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- System Logs tab -->
+        <div class="tab-content" data-tab="logs" style="display: none;">
+          <div class="settings-section">
+            <h2>System Logs</h2>
+            
+            <div class="log-actions">
+              <button id="clear-logs-button" class="secondary-button">
+                <span class="icon icon-trash"></span>
+                Clear Logs
+              </button>
+            </div>
+            
+            <div id="error-logs" class="logs-container">
+              <div class="loading">Loading logs...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Actions -->
+    <div class="actions">
+      <button id="save-button" class="primary-button">Save Settings</button>
+      <button id="reset-button" class="secondary-button">Reset to Defaults</button>
+    </div>
+  </div>
+  
+  <script src="../js/options.js" type="module"></script>
+</body>
+</html>

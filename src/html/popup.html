@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus</title>
+  <link rel="stylesheet" href="../css/popup.css">
+</head>
+<body>
+  <div class="nexus-popup">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <img src="../images/icon48.png" alt="Nexus Logo" class="logo-image">
+        <h1>Nexus</h1>
+      </div>
+      <div class="actions">
+        <button id="options-button" class="icon-button" title="Settings">
+          <span class="icon icon-settings"></span>
+        </button>
+      </div>
+    </header>
+    
+    <!-- Tab navigation -->
+    <nav class="tab-navigation">
+      <button class="tab-button active" data-tab="home">Home</button>
+      <button class="tab-button" data-tab="search">Search</button>
+      <button class="tab-button" data-tab="status">Status</button>
+    </nav>
+    
+    <!-- Status message container -->
+    <div id="status-message" class="status-message" style="display: none;"></div>
+    
+    <!-- Error container -->
+    <div id="error-container" class="error-container" style="display: none;"></div>
+    
+    <!-- Tab content -->
+    <div class="tab-container">
+      <!-- Home tab -->
+      <div class="tab-content" data-tab="home">
+        <div class="quick-actions">
+          <button id="capture-button" class="primary-button">
+            <span class="icon icon-capture"></span>
+            Capture Page
+          </button>
+          <button id="knowledge-map-button" class="secondary-button">
+            <span class="icon icon-map"></span>
+            View Knowledge Map
+          </button>
+        </div>
+        
+        <div class="section">
+          <h2>Recent Captures</h2>
+          <div id="recent-nodes" class="nodes-container">
+            <div class="loading">Loading...</div>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>Quick Insights</h2>
+          <div id="quick-insights" class="insights-container">
+            <div class="empty-state">
+              <p>Capture more content to generate insights.</p>
+              <button id="generate-insights-button" class="secondary-button">
+                Generate Insights
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Search tab -->
+      <div class="tab-content" data-tab="search" style="display: none;">
+        <div class="search-container">
+          <div class="search-field">
+            <input type="text" id="search-input" placeholder="Search your knowledge...">
+            <button id="search-button" class="icon-button">
+              <span class="icon icon-search"></span>
+            </button>
+          </div>
+          
+          <div class="search-results" id="search-results">
+            <div class="empty-state">
+              <p>Enter a search term to find related knowledge.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Status tab -->
+      <div class="tab-content" data-tab="status" style="display: none;">
+        <div id="system-status" class="status-container">
+          <div class="loading">Loading system status...</div>
+        </div>
+        
+        <div class="section">
+          <h2>Knowledge Statistics</h2>
+          <div id="knowledge-stats" class="stats-container">
+            <div class="loading">Loading statistics...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="version">v3.0.0</div>
+    </footer>
+  </div>
+  
+  <script src="../js/popup.js" type="module"></script>
+</body>
+</html>

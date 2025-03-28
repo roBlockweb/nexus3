@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Nexus</title>
+  <link rel="stylesheet" href="../css/onboarding.css">
+</head>
+<body>
+  <div class="nexus-onboarding">
+    <header class="header">
+      <div class="logo">
+        <img src="../images/icon128.png" alt="Nexus Logo" class="logo-image">
+        <h1>Welcome to Nexus</h1>
+      </div>
+    </header>
+    
+    <div class="onboarding-container">
+      <!-- Progress indicator -->
+      <div class="progress-indicator">
+        <div class="progress-step active" data-step="1"></div>
+        <div class="progress-step" data-step="2"></div>
+        <div class="progress-step" data-step="3"></div>
+        <div class="progress-step" data-step="4"></div>
+      </div>
+      
+      <!-- Onboarding steps -->
+      <div class="steps-container">
+        <!-- Step 1: Welcome -->
+        <div class="step active" data-step="1">
+          <h2>Your Personal Knowledge Ecosystem</h2>
+          <div class="step-content">
+            <div class="illustration">
+              <img src="../images/onboarding-welcome.svg" alt="Welcome illustration">
+            </div>
+            <p>
+              Nexus helps you capture, connect, and rediscover knowledge from across the web. Using AI that 
+              runs completely on your device, Nexus transforms how you collect and interact with information.
+            </p>
+            <div class="features">
+              <div class="feature">
+                <div class="feature-icon icon-privacy"></div>
+                <div class="feature-text">
+                  <strong>100% Private</strong>
+                  <span>All processing happens on your device</span>
+                </div>
+              </div>
+              <div class="feature">
+                <div class="feature-icon icon-ai"></div>
+                <div class="feature-text">
+                  <strong>AI-Powered</strong>
+                  <span>Automatic categorization and connections</span>
+                </div>
+              </div>
+              <div class="feature">
+                <div class="feature-icon icon-knowledge"></div>
+                <div class="feature-text">
+                  <strong>Knowledge Map</strong>
+                  <span>Visual exploration of your knowledge</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Step 2: How It Works -->
+        <div class="step" data-step="2">
+          <h2>How Nexus Works</h2>
+          <div class="step-content">
+            <div class="workflow">
+              <div class="workflow-step">
+                <div class="workflow-number">1</div>
+                <div class="workflow-icon icon-capture"></div>
+                <div class="workflow-text">
+                  <strong>Capture</strong>
+                  <p>Click the Nexus icon or use shortcut (Ctrl+Shift+S) to save content from any web page.</p>
+                </div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-number">2</div>
+                <div class="workflow-icon icon-process"></div>
+                <div class="workflow-text">
+                  <strong>Process</strong>
+                  <p>Nexus uses on-device AI to analyze and categorize your content, extract key entities, and find connections.</p>
+                </div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-number">3</div>
+                <div class="workflow-icon icon-connect"></div>
+                <div class="workflow-text">
+                  <strong>Connect</strong>
+                  <p>Your knowledge is automatically connected in a network you can explore visually.</p>
+                </div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-number">4</div>
+                <div class="workflow-icon icon-discover"></div>
+                <div class="workflow-text">
+                  <strong>Discover</strong>
+                  <p>Find insights, patterns, and relationships in your knowledge network.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Step 3: Setup -->
+        <div class="step" data-step="3">
+          <h2>Quick Setup</h2>
+          <div class="step-content">
+            <div class="settings-preview">
+              <div class="settings-section">
+                <h3>Choose Your AI Processing Level</h3>
+                <div class="setting-group">
+                  <div class="radio-option">
+                    <input type="radio" id="minimal" name="ai-level" value="minimal">
+                    <label for="minimal">
+                      <strong>Minimal</strong>
+                      <span>Basic categorization only. Fastest, lowest resource usage.</span>
+                    </label>
+                  </div>
+                  <div class="radio-option">
+                    <input type="radio" id="balanced" name="ai-level" value="balanced" checked>
+                    <label for="balanced">
+                      <strong>Balanced (Recommended)</strong>
+                      <span>Standard processing with entities, categories, and connections.</span>
+                    </label>
+                  </div>
+                  <div class="radio-option">
+                    <input type="radio" id="full" name="ai-level" value="full">
+                    <label for="full">
+                      <strong>Full</strong>
+                      <span>Maximum processing including summarization and insights. Highest resource usage.</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="settings-section">
+                <h3>Hardware Optimization</h3>
+                <div class="setting-group">
+                  <div class="radio-option">
+                    <input type="radio" id="auto" name="hardware" value="auto" checked>
+                    <label for="auto">
+                      <strong>Automatic (Recommended)</strong>
+                      <span>Nexus will automatically choose the best hardware for AI processing.</span>
+                    </label>
+                  </div>
+                  <div class="radio-option">
+                    <input type="radio" id="gpu" name="hardware" value="gpu">
+                    <label for="gpu">
+                      <strong>Prefer GPU</strong>
+                      <span>Use GPU acceleration when available. Faster but uses more power.</span>
+                    </label>
+                  </div>
+                  <div class="radio-option">
+                    <input type="radio" id="cpu" name="hardware" value="cpu">
+                    <label for="cpu">
+                      <strong>CPU Only</strong>
+                      <span>Use CPU for all processing. More power efficient but slower.</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="settings-section">
+                <div class="setting-item">
+                  <label for="auto-capture" class="toggle-label">
+                    Auto-Capture Important Content
+                    <div class="toggle-switch">
+                      <input type="checkbox" id="auto-capture">
+                      <span class="toggle-slider"></span>
+                    </div>
+                  </label>
+                  <div class="setting-description">
+                    Automatically capture important content from pages you visit.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="settings-note">
+              You can change these settings anytime from the options page.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Step 4: Get Started -->
+        <div class="step" data-step="4">
+          <h2>Ready to Transform Your Knowledge</h2>
+          <div class="step-content">
+            <div class="illustration">
+              <img src="../images/onboarding-complete.svg" alt="Ready to go illustration">
+            </div>
+            <p class="success-message">
+              You're all set! Nexus is ready to help you capture, organize, and discover knowledge.
+            </p>
+            <div class="next-steps">
+              <h3>Next Steps:</h3>
+              <ul>
+                <li>Click the Nexus icon in your browser to open the extension</li>
+                <li>Visit a web page and use the "Capture Page" button</li>
+                <li>Explore your knowledge map as it grows</li>
+              </ul>
+            </div>
+            <div class="help-resources">
+              <h3>Need Help?</h3>
+              <p>
+                Visit our <a href="https://nexus.example.com/help" target="_blank">help center</a> for tips, tutorials, and FAQs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Navigation buttons -->
+      <div class="navigation-buttons">
+        <button id="prev-button" class="secondary-button" disabled>Previous</button>
+        <button id="next-button" class="primary-button">Next</button>
+        <button id="finish-button" class="primary-button" style="display: none;">Get Started</button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../js/onboarding.js" type="module"></script>
+</body>
+</html>

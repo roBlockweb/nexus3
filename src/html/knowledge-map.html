@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus Knowledge Map</title>
+  <link rel="stylesheet" href="../css/knowledge-map.css">
+</head>
+<body>
+  <div class="nexus-knowledge-map">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <img src="../images/icon48.png" alt="Nexus Logo" class="logo-image">
+        <h1>Knowledge Map</h1>
+      </div>
+      <div class="header-actions">
+        <button id="settings-button" class="icon-button" title="Settings">
+          <span class="icon icon-settings"></span>
+        </button>
+        <button id="help-button" class="icon-button" title="Help">
+          <span class="icon icon-help"></span>
+        </button>
+      </div>
+    </header>
+    
+    <!-- Main content -->
+    <div class="content">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <h2>Filters</h2>
+          <div class="filter-group">
+            <h3>Time Range</h3>
+            <select id="time-filter" class="filter-select">
+              <option value="all">All Time</option>
+              <option value="day">Last 24 Hours</option>
+              <option value="week">Last Week</option>
+              <option value="month">Last Month</option>
+              <option value="custom">Custom Range</option>
+            </select>
+            
+            <div id="custom-date-range" style="display: none;">
+              <div class="date-range">
+                <label for="date-from">From:</label>
+                <input type="date" id="date-from" class="date-input">
+              </div>
+              <div class="date-range">
+                <label for="date-to">To:</label>
+                <input type="date" id="date-to" class="date-input">
+              </div>
+            </div>
+          </div>
+          
+          <div class="filter-group">
+            <h3>Categories</h3>
+            <div id="category-filters" class="checkbox-group">
+              <div class="loading">Loading categories...</div>
+            </div>
+          </div>
+          
+          <div class="filter-group">
+            <h3>Sources</h3>
+            <div id="source-filters" class="checkbox-group">
+              <div class="loading">Loading sources...</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="sidebar-section">
+          <h2>Map Settings</h2>
+          <div class="setting-item">
+            <label for="layout-type">Layout</label>
+            <select id="layout-type" class="setting-select">
+              <option value="force">Force-Directed</option>
+              <option value="radial">Radial</option>
+              <option value="tree">Tree</option>
+              <option value="cluster">Cluster</option>
+            </select>
+          </div>
+          
+          <div class="setting-item">
+            <label for="node-size">Node Size</label>
+            <select id="node-size" class="setting-select">
+              <option value="uniform">Uniform</option>
+              <option value="degree">By Connections</option>
+              <option value="age">By Age</option>
+              <option value="content">By Content Size</option>
+            </select>
+          </div>
+          
+          <div class="setting-item">
+            <label for="edge-visibility">Connection Lines</label>
+            <select id="edge-visibility" class="setting-select">
+              <option value="all">Show All</option>
+              <option value="important">Important Only</option>
+              <option value="hover">On Hover</option>
+              <option value="none">Hide All</option>
+            </select>
+          </div>
+          
+          <div class="setting-item">
+            <label for="theme-select">Map Theme</label>
+            <select id="theme-select" class="setting-select">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+              <option value="colorful">Colorful</option>
+              <option value="minimal">Minimal</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="sidebar-section">
+          <h2>Statistics</h2>
+          <div id="map-statistics" class="statistics-container">
+            <div class="loading">Loading statistics...</div>
+          </div>
+        </div>
+      </aside>
+      
+      <!-- Map container -->
+      <div class="map-container">
+        <!-- Map controls -->
+        <div class="map-controls">
+          <button id="zoom-in-button" class="control-button" title="Zoom In">
+            <span class="icon icon-zoom-in"></span>
+          </button>
+          <button id="zoom-out-button" class="control-button" title="Zoom Out">
+            <span class="icon icon-zoom-out"></span>
+          </button>
+          <button id="fit-button" class="control-button" title="Fit to Screen">
+            <span class="icon icon-fit"></span>
+          </button>
+          <button id="screenshot-button" class="control-button" title="Take Screenshot">
+            <span class="icon icon-screenshot"></span>
+          </button>
+        </div>
+        
+        <!-- Search overlay -->
+        <div class="search-overlay">
+          <div class="search-container">
+            <input type="text" id="map-search" placeholder="Search your knowledge map...">
+            <button id="search-button" class="icon-button">
+              <span class="icon icon-search"></span>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Loading indicator -->
+        <div id="map-loading" class="loading-overlay">
+          <div class="loading-spinner"></div>
+          <div class="loading-text">Loading your knowledge map...</div>
+        </div>
+        
+        <!-- Map visualization goes here -->
+        <div id="knowledge-map-visualization" class="visualization"></div>
+        
+        <!-- Empty state -->
+        <div id="empty-state" class="empty-state" style="display: none;">
+          <div class="empty-state-icon"></div>
+          <h2>Your Knowledge Map is Empty</h2>
+          <p>Start capturing content from web pages to build your knowledge network.</p>
+          <button id="capture-demo-button" class="primary-button">Try a Demo</button>
+        </div>
+      </div>
+      
+      <!-- Node details panel -->
+      <div id="node-details" class="node-details-panel" style="display: none;">
+        <div class="panel-header">
+          <h2 id="node-title">Node Title</h2>
+          <button id="close-panel-button" class="icon-button">
+            <span class="icon icon-close"></span>
+          </button>
+        </div>
+        
+        <div class="panel-content">
+          <div class="node-metadata">
+            <div class="metadata-item">
+              <span class="metadata-label">Captured</span>
+              <span id="node-date" class="metadata-value">Date</span>
+            </div>
+            <div class="metadata-item">
+              <span class="metadata-label">Source</span>
+              <span id="node-source" class="metadata-value">Source</span>
+            </div>
+          </div>
+          
+          <div class="node-categories">
+            <div id="node-category-list" class="tag-list"></div>
+          </div>
+          
+          <div class="node-content">
+            <h3>Content</h3>
+            <div id="node-content-preview" class="content-preview"></div>
+          </div>
+          
+          <div class="node-connections">
+            <h3>Connections</h3>
+            <div id="node-connections-list" class="connections-list"></div>
+          </div>
+        </div>
+        
+        <div class="panel-actions">
+          <button id="open-node-button" class="secondary-button">
+            <span class="icon icon-open"></span>
+            Open Full Content
+          </button>
+          <button id="delete-node-button" class="danger-button">
+            <span class="icon icon-delete"></span>
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../js/knowledge-map.js" type="module"></script>
+</body>
+</html>
